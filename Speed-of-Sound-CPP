@@ -1,0 +1,83 @@
+/*
+    The purpose of this program is to provide the user a menu of mediums, take as input the desired medium,
+    take as input the distance to travel through said medium, and provide them with the time it will take for 
+    sound to travel the given distance in the required medium.
+*/
+// Incoudes possibly necessary libraries using the standard namespace.
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <cmath>
+using namespace std;
+
+// The main function of the program.
+int main()
+{
+    // Defines necessary variables and constants in the required data types.
+    unsigned int choice;
+    const double sWood = 12631.23, sSteel = 10614.81, sWater = 4714.57, sAir = 1125.33;
+    double distance, time;
+
+    // Presents the menu to the user.
+    cout << fixed << setprecision(4);
+    cout << "\tTime for Sound to Travel through a Medium given Distance\n";
+    cout << "\n1 - Wood\n2 - Steel\n3 - Water\n4 - Air" << endl;
+    cout << "\nEnter the number of the medium: ";
+    cin >> choice;
+    cout << endl;
+
+    // Decides whether or not the user has entered a valid menu option.
+    // If the choice is not part of the possible options, raises error.
+    if (choice > 4 || choice < 1)
+    {
+        cout << "Error, invalid entry!\nPlease run the program again.\n";
+    }
+    // Otherwise, proceeds to take as input the distance.
+    else 
+    {
+        cout << "Enter the distance to travel (in feet): ";
+        cin >> distance;
+
+        // Decides whether or not the distance is valid. 
+        // If distance is not valid, raises an error.
+        if (distance <= 0)
+        {
+            cout << "\nError, the distance must be greater than zero.\n";
+        }
+        // Otherwise, proceed with the switch.
+        else
+            {
+            // The switch takes as input the choice and makes the calculations accordingly.
+            switch (choice)
+            {
+            // If option 1, proceeds with wood as the medium and displays the calculations.
+            case 1:
+            time =  distance / sWood;
+            cout << "\nIn wood it will take " << time << " seconds to travel " << setprecision(2) << distance << " feet.";
+            break;
+            
+            // If option 2, proceeds with steel as the medium and displays the calculations.
+            case 2:
+            time = distance / sSteel;
+            cout << "\nIn steel it will take " << time << " seconds to travel " << setprecision(2) << distance << " feet.";
+            break;
+
+            // If option 3, proceeds with water as the medium and displays the calculations.
+            case 3:
+            time = distance / sWater;
+            cout << "\nIn water it will take " << time << " seconds to travel " << setprecision(2) << distance << " feet.";
+            break;
+
+            // If option 4, proceeds with air as the medium and displays the calculations.
+            case 4:
+            time = distance / sAir;
+            cout << "\nIn air it will take " << time << " seconds to travel " << setprecision(2) << distance << " feet.";
+            break;
+            }
+        // Makes a newline at the end of the output regardless of the output.
+        cout << endl;
+    }
+}
+// Returns 0.
+return 0;
+}
